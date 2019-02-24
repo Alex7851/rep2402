@@ -1,15 +1,37 @@
-$("input:text").on('input', function(){
+$("input:text").on('input', mainEngine)
 
 
-	var fieldName=$(this).attr('name');
-	var selectorStatus=parseInt($('[name="firstSelector"]').children("option:selected").val());
-	var currency;
+function mainEngine(){
+var selectorStatus=parseInt($('[name="firstSelector"]').children("option:selected").val());
+var fieldName=$(this).attr('name');
+var currency;
+
+if ($(this).val() == '') {
+	$('[name="inputField1"]').val('');
+		$('[name="inputField2"]').val('');
+		return;
+}
+
+if (!selectorStatus) {
+
+		$('[name="inputField1"]').val("Выберите валюту");
+		$('[name="inputField2"]').val("Выберите валюту");
+		return;
+		
+
+}
+
+if (!$.isNumeric($(this).val())) {
+$(this).val('');
+return;
+
+
+}
+	
 	
 	switch(selectorStatus)	{
 
-		case 0:
-		currency=0;
-		break;
+		
 
 		case 1:
 		currency= parseFloat($('.dataSellWmr').text());
@@ -40,4 +62,4 @@ $("input:text").on('input', function(){
 
 
 
-})
+}
