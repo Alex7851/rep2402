@@ -3,44 +3,35 @@ body {
 		text-align: center;
 }
 
+.header1{
 
-.wrapper {
+	color: white;
+	font-size: 45px;
+	font-weight: bold;
+}
 
+.header2{
 
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+}
+.wrapper{
+	display: inline-block;
+	height: 590px;
+}
 
-
-display: inline-block;
-	.blockstyle{
-		margin-top: 20px;
-		display: inline-block;
-		width: 585px;
-		height: 550px;
-		background: #C1262A;
-		box-sizing: border-box;
-	}
-
-	.rightblock{
-		background: #00B9B3;
-		margin-left: -3px;
-	}
-	hr{
-		border: none; 
-	    background-color: #5D6770; 
-	    color: #5D6770; 
-	    height: 1px; 
-	    margin-top: 45px;
-	    margin-left: 15px;
-	    margin-right: 15px;
-
-	}
-
-	select{
+.subwrapper {
+	text-align: left;
+}
+select{
 		width: 75px;
 		height: 30px;
 		padding: 2px 7px;
 		border-radius: 5px;
 		color: #BBBBBB;
 		font-style: italic;	
+		margin-left: 20px;
 		option{
 			color: #000000;
 			font-style: normal;
@@ -48,6 +39,57 @@ display: inline-block;
 	}
 
 
-}
+	
 
+	.blockstyle{
+		margin-top: 20px;
+		display: inline-block;
+		width: 585px;
+		height: 550px;
+		background: #C1262A;
+		box-sizing: border-box;
+		padding: 100px;
+		float: left;
+	}
+
+	.rightblock{
+		background: #00B9B3;
+		margin-left: -3px;
+		float: right;
+	}
+
+	hr{
+
+		border: none; 
+	    background-color: #5D6770; 
+	    color: #5D6770; 
+	    height: 1px !important;
+	    margin-top: 45px;
+	    margin-left: 15px;
+	    margin-right: 15px;
+	    clear: both;
+
+	}
+
+	
+
+	label{
+		color: white;
+		font-family: Arial;
+		height: 30px;
+
+	}
+
+	input{
+		height: 22px;
+	padding: 2px 7px;
+		border-radius: 5px;
+margin-top: 5px;
+	}
+
+@media (max-width:1200px) {
+.blockstyle{
+	float: none;
+}
+}
 

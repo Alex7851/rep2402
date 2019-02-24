@@ -3,9 +3,6 @@ $('.wrapper .rightblock').on('input', "input:text", {typeExchange: "buy" , check
 $('.wrapper [name="firstSelector"]').on('input', {typeExchange: "sell", checkStatus: "none"}, mainEngine)
 $('.wrapper [name="secondSelector"]').on('input', {typeExchange: "buy", checkStatus: "none"}, mainEngine)
 
-
-
-
 function mainEngine(e){
 	var selector_;
 	var firstInputField;
@@ -31,26 +28,21 @@ function mainEngine(e){
 	 	fieldNameToCheck="inputField4";
 	}
 
+	var selectorStatus=parseInt($(selector_).children("option:selected").val());
+	var fieldName=$(this).attr('name');
+	var currency;
 
-var selectorStatus=parseInt($(selector_).children("option:selected").val());
-var fieldName=$(this).attr('name');
-var currency;
+	if (!selectorStatus && e.data.checkStatus=="present") {
+			$(firstInputField).val("Выберите валюту");
+			$(secondInputField).val("Выберите валюту");
+			return;
+	}
 
-
-
-
-if (!selectorStatus && e.data.checkStatus=="present") {
-		$(firstInputField).val("Выберите валюту");
-		$(secondInputField).val("Выберите валюту");
+	if (!$.isNumeric($(this).val()) || $(this).val() == '' && e.data.checkStatus=="present") {
+		$(firstInputField).val("");
+		$(secondInputField).val("");
 		return;
-}
-
-if (!$.isNumeric($(this).val()) || $(this).val() == '' && e.data.checkStatus=="present") {
-	$(firstInputField).val("");
-	$(secondInputField).val("");
-	return;
-}
-	
+	}
 	
 	switch(selectorStatus)	{
 		case 1:
@@ -89,11 +81,10 @@ if (!$.isNumeric($(this).val()) || $(this).val() == '' && e.data.checkStatus=="p
 			result=(parseInt($(secondInputField).val())/currency).toFixed(2)
 			$(firstInputField).val(result);
 		};
-
+	setData();
 	return;
 	}
 // -----------------------------------------------------------------------------------------------------------
-	
 
 	if (fieldName==fieldNameToCheck) {
 
@@ -105,4 +96,14 @@ if (!$.isNumeric($(this).val()) || $(this).val() == '' && e.data.checkStatus=="p
 		result=(parseInt($(this).val())/currency).toFixed(2)
 		$(firstInputField).val(result)
 	}
+
+	setData();
+
+	function setData() {
+		 localStorage.setItem('input1', $('[name="inputField1"]').val());
+		 localStorage.setItem('input2', $('[name="inputField2"]').val());
+		 localStorage.setItem('input3', $('[name="inputField3"]').val());
+		 localStorage.setItem('input4', $('[name="inputField4"]').val());
+	}
 }
+
