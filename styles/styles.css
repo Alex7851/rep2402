@@ -1,0 +1,40 @@
+body {
+  background: #37414a;
+  text-align: center;
+}
+.wrapper {
+  display: inline-block;
+}
+.wrapper .blockstyle {
+  margin-top: 20px;
+  display: inline-block;
+  width: 585px;
+  height: 550px;
+  background: #c1262a;
+  box-sizing: border-box;
+}
+.wrapper .rightblock {
+  background: #00b9b3;
+  margin-left: -3px;
+}
+.wrapper hr {
+  border: none;
+  background-color: #5d6770;
+  color: #5d6770;
+  height: 1px;
+  margin-top: 45px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.wrapper select {
+  width: 75px;
+  height: 30px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: #bbbbbb;
+  font-style: italic;
+}
+.wrapper select option {
+  color: black;
+  font-style: normal;
+}

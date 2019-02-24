@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" href="styles/styles.css">	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/exchange_data.js"></script>	
+</head>
+<body>
+<div class="wrapper">
+	<div class="blockstyle">
+		<div>ПОКУПАЕМ</div>
+		<div><span>1 WMR - </span><span class="dataSellWmr"></span><span> руб</span></div>
+		<div><span>1 WMZ - </span><span class="dataSellWmz"></span><span> руб</span></div>
+		
+		<form action="">
+			<div><label for="">Вы отдадите</label><input type="text" name="inputField1">
+			<select name="firstSelector" id="">
+				<option value="0" disabled selected hidden=""><span style="color:#DDDDDD">Sele...</span></option>
+				<option value="1">WMR</option>
+				<option value="2">WMZ</option>
+			</select></div>
+			<div><label for="">Вы получите</label><input type="text"  name="inputField2"></div>
+		</form>
+
+
+	</div>
+	<div class="blockstyle rightblock">
+		<div>ПОКУПАЕМ</div>
+		<div><span>1 WMR - </span><span class="dataBuyWmr"></span><span> руб</span></div>
+		<div><span>1 WMZ - </span><span class="dataBuyWmz"></span><span> руб</span></div>
+		<form action="">
+			
+			<div><label for="">Вы отдадите</label><input type="text"><select name="" id=""></select></div>
+			<div><label for="">Вы получите</label><input type="text"></div>
+		</form>
+	</div>
+	<hr>
+</div>
+</body>
+<script src="js/main.js"></script>	
+</html>
