@@ -1,7 +1,11 @@
-$("input:text").on('input', mainEngine)
+$('.wrapper .leftblock').on('input', "input:text", {typeExchange: "sell" }, mainEngine)
 
 
 function mainEngine(){
+
+
+
+
 var selectorStatus=parseInt($('[name="firstSelector"]').children("option:selected").val());
 var fieldName=$(this).attr('name');
 var currency;
