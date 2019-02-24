@@ -1,32 +1,47 @@
 $('.wrapper .leftblock').on('input', "input:text", {typeExchange: "sell" }, mainEngine)
 
 
-function mainEngine(){
+function mainEngine(e){
+var selector_;
+var firstInputField;
+var secondInputField;
+var firstInputField;
+var secondInputField;
+
+if (e.data.typeExchange=="sell") {
+	selector_='[name="firstSelector"]';
+	firstInputField='[name="inputField1"]';
+	secondInputField='[name="inputField2"]';
+	firstSpanField='.dataSellWmr';
+ 	secondSpanField='.dataSellWmz';
+}
 
 
-
-
-var selectorStatus=parseInt($('[name="firstSelector"]').children("option:selected").val());
+var selectorStatus=parseInt($(selector_).children("option:selected").val());
 var fieldName=$(this).attr('name');
 var currency;
-
+console.log(selectorStatus);
 if ($(this).val() == '') {
-	$('[name="inputField1"]').val('');
-		$('[name="inputField2"]').val('');
+	$(firstInputField).val('');
+	$(secondInputField).val('');
 		return;
 }
 
 if (!selectorStatus) {
 
-		$('[name="inputField1"]').val("Выберите валюту");
-		$('[name="inputField2"]').val("Выберите валюту");
+		$(firstInputField).val("Выберите валюту");
+		$(secondInputField).val("Выберите валюту");
 		return;
 		
 
 }
 
 if (!$.isNumeric($(this).val())) {
-$(this).val('');
+$(firstInputField).val("");
+$(secondInputField).val("");
+
+
+
 return;
 
 
@@ -38,11 +53,11 @@ return;
 		
 
 		case 1:
-		currency= parseFloat($('.dataSellWmr').text());
+		currency= parseFloat($(firstSpanField).text());
 		break;
 
 		case 2:
-		currency= parseFloat($('.dataSellWmz').text());
+		currency= parseFloat($(secondSpanField).text());
 		break;
 
 	}
@@ -56,12 +71,12 @@ return;
 	if (fieldName=="inputField1") {
 
 	   	result=(parseInt($(this).val())*currency).toFixed(2)
-		$('[name="inputField2"]').val(result)
+		$(secondInputField).val(result)
 	}
 	else {
 
 		result=(parseInt($(this).val())/currency).toFixed(2)
-		$('[name="inputField1"]').val(result)
+		$(firstInputField).val(result)
 	}
 
 
