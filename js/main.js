@@ -1,6 +1,9 @@
 $('.wrapper .leftblock').on('input', "input:text", {typeExchange: "sell", checkStatus: "present" }, mainEngine)
-$('.wrapper .rightblock').on('input', "input:text", {typeExchange: "buy" }, mainEngine)
+$('.wrapper .rightblock').on('input', "input:text", {typeExchange: "buy" , checkStatus: "present" }, mainEngine)
 $('.wrapper [name="firstSelector"]').on('input', {typeExchange: "sell", checkStatus: "none"}, mainEngine)
+$('.wrapper [name="secondSelector"]').on('input', {typeExchange: "buy", checkStatus: "none"}, mainEngine)
+
+
 
 
 function mainEngine(e){
@@ -34,11 +37,7 @@ var fieldName=$(this).attr('name');
 var currency;
 
 
-if ($(this).val() == '' && e.data.checkStatus=="present") {
-	$(firstInputField).val('');
-	$(secondInputField).val('');
-		return;
-}
+
 
 if (!selectorStatus && e.data.checkStatus=="present") {
 		$(firstInputField).val("Выберите валюту");
@@ -46,7 +45,7 @@ if (!selectorStatus && e.data.checkStatus=="present") {
 		return;
 }
 
-if (!$.isNumeric($(this).val()) && e.data.checkStatus=="present") {
+if (!$.isNumeric($(this).val()) || $(this).val() == '' && e.data.checkStatus=="present") {
 	$(firstInputField).val("");
 	$(secondInputField).val("");
 	return;
@@ -65,20 +64,36 @@ if (!$.isNumeric($(this).val()) && e.data.checkStatus=="present") {
 	
 	var result;
 
-
+ // Этот блок срабатывает только при смене валюты:  здесь проверка на поля отличная от ввода в input и отдельный расчет только нижнего поля
+ // ----------------------------------------------------------------------------------------------------------------
 	if (e.data.checkStatus=="none") {
 
-	if ($(this).attr('name')=="firstSelector"){
-		result=(parseInt($(firstInputField).val())*currency).toFixed(2)
-		$(secondInputField).val(result)
-	};
-	
+		if ($(this).attr('name')=="firstSelector"){
 
-	
+			if (!$.isNumeric($(firstInputField).val()) || $(firstInputField).val() == '') {
+				$(firstInputField).val("");
+				$(secondInputField).val("");
+				return;
+			}
+			result=(parseInt($(firstInputField).val())*currency).toFixed(2)
+			$(secondInputField).val(result);
+		};
 
+		if ($(this).attr('name')=="secondSelector"){
+
+			if (!$.isNumeric($(secondInputField).val()) || $(secondInputField).val() == '') {
+				$(firstInputField).val("");
+				$(secondInputField).val("");
+				return;
+			}
+			result=(parseInt($(secondInputField).val())/currency).toFixed(2)
+			$(firstInputField).val(result);
+		};
 
 	return;
 	}
+// -----------------------------------------------------------------------------------------------------------
+	
 
 	if (fieldName==fieldNameToCheck) {
 
